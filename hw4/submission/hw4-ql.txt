@@ -1,0 +1,4 @@
+SELECT PC1.p, COUNT(*) AS y
+FROM person_living AS P, parent_child AS PC1, parent_child AS PC2
+WHERE P.x = PC1.p AND PC1.c = PC2.p
+GROUP BY PC1.p, PC2.p, y, MAX(y);
