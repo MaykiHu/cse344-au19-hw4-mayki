@@ -53,19 +53,36 @@ p2(y,d,m) :- male(y), CountChild(y,m), person(y,d), m = max c : { male(p), Count
 
 /************* problem 3 **************/
 .decl p3(x:PersonType, m1:number, m2:number)
+//.decl Parents(x:PersonType, y:PersonType, c:PersonType)
+.decl Gen(p:PersonType, c:number)
 
 .output p3(filename="hw4-3.ans")
 .output p3(IO=stdout)
-// test
+//.output Parents(IO=stdout)
+//Parents(x,y,c) :- person_living(c), female(x), male(y), parent_child(x,c), parent_child(y,c).
+// Tried to think this as a base-case where we'd keep adding generations upwards and count
+// but not able to understand fully how to do that.  :(
+Gen(p,c) :- person_living(x), parent_child(p,x), c = 0.
+Gen(p,c) :- Gen(p,c), person_living(x), parent_child(p,x), c = c + 1.
+p3(x,m1,m2) :- person_living(x), m1 = min c : { Gen(x,c)} , m2 = max c : { Gen(x,c) }.
 
 /************* problem 4 **************/
 .decl p4(x:PersonType)
+.decl AllM(m:PersonType)
 
 .output p4(filename="hw4-4.ans")
 .output p4(IO=stdout)
+// Below is all matriarchs, stuck on finding CMAs
+AllM(m0) :- person_living(x), female(m0), parent_child(m0,x).
+AllM(m1) :- female(m1), AllM(p), parent_child(m1,p).
+p4(x) :- AllM(x).
 
 /************* problem 5 **************/
 .decl p5(x:PersonType)
 
 .output p5(filename="hw4-5.ans")
 .output p5(IO=stdout)
+// Since was not able to do 3, incomplete 4, I feel
+// like I would need to use both predicates
+// where I would look at the CMAs (p4), then compare
+// their generations (p3).  :(
