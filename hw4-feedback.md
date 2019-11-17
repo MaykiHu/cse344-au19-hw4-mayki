@@ -18,11 +18,11 @@ Comments:
 #### Datalog 2: 10/10 points
 Comments: 
 
-#### Datalog 1: 0/20 points
+#### Datalog 3: 0/20 points
 Comments: Not attempted
 
-#### Datalog 2: 0/20 points
+#### Datalog 4: 0/20 points
 Comments: not attempted
 
-#### Datalog 1: 0/20 points
+#### Datalog 5: 0/20 points
 Comments: no submission
